@@ -1,5 +1,3 @@
-@import url(https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css);
-
 .pure-g {
     align-content: unset;
     -webkit-align-content: unset;
@@ -705,6 +703,7 @@ button.tips {
 }
 
 .user-invite input,
+.user-charge input,
 .btn-inline {
     background: rgba(255, 255, 255, 0);
 }
@@ -918,10 +917,6 @@ button[name=reset] {
         height: 385px;
     }
 
-    .user-guide .tips {
-        margin-right: .5rem;
-    }
-
     .link-reset .uim-tooltip-top {
         width: 230px;
     }
@@ -949,7 +944,7 @@ button[name=reset] {
         margin-right: 0;
     }
 
-    .userinvite-table-container {
+    .user-table-container {
         overflow: auto;
         max-height: 355px;
     }

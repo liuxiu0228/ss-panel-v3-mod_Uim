@@ -77,7 +77,7 @@
                   <span>订阅链接</span>
                   <span class="link-reset relative flex justify-center text-center">
                     <button @click="showToolTip('resetConfirm')" class="tips tips-red">
-                      <span class="fa fa-refresh"></span> 重置链接
+                      <font-awesome-icon icon="sync-alt" />&nbsp;重置链接
                     </button>
                     <uim-tooltip
                       v-show="toolTips.resetConfirm"
@@ -87,10 +87,10 @@
                         <span>确定要重置订阅链接？</span>
                         <div>
                           <button @click="resetSubscribLink" class="tips tips-green">
-                            <span class="fa fa-fw fa-check"></span>
+                            <font-awesome-icon icon="check" fixed-width />
                           </button>
                           <button @click="hideToolTip('resetConfirm')" class="tips tips-red">
-                            <span class="fa fa-fw fa-remove"></span>
+                            <font-awesome-icon icon="times" fixed-width />
                           </button>
                         </div>
                       </template>
@@ -241,6 +241,7 @@ import UserShop from "@/components/panel/UserShop.vue";
 import UserGuide from "@/components/panel/UserGuide.vue";
 import UserResourse from "@/components/panel/UserResourse.vue";
 import UserSettings from "@/components/panel/UserSettings.vue";
+import UserCharge from "@/components/panel/UserCharge.vue";
 
 import Dropdown from "@/components/dropdown.vue";
 import Tooltip from "@/components/tooltip.vue";
@@ -257,6 +258,7 @@ export default {
     "user-guide": UserGuide,
     "user-resourse": UserResourse,
     "user-settings": UserSettings,
+    "user-charge": UserCharge,
     "uim-dropdown": Dropdown,
     "uim-tooltip": Tooltip,
     "uim-anchor": Anchor
@@ -299,8 +301,10 @@ export default {
           return 1;
         case "user-invite":
           return 2;
-        case "user-shop":
+        case "user-charge":
           return 3;
+        case "user-shop":
+          return 4;
       }
     }
   },
@@ -339,6 +343,10 @@ export default {
           id: "user-invite"
         },
         {
+          name: "充值中心",
+          id: "user-charge"
+        },
+        {
           name: "套餐购买",
           id: "user-shop"
         }
@@ -361,7 +369,7 @@ export default {
       _get("/logout", "include").then(r => {
         if (r.ret === 1) {
           callConfig.msg += "账户成功登出Kira~";
-          callConfig.icon += "fa-check-square-o";
+          callConfig.icon += "check-circle";
           this.callMsgr(callConfig);
           window.setTimeout(() => {
             this.setLoginToken(false);
@@ -412,7 +420,7 @@ export default {
         this.showTransition("subLinkTrans");
         let callConfig = {
           msg: "已重置您的订阅链接，请变更或添加您的订阅链接！",
-          icon: "fa-bell",
+          icon: "bell",
           time: 1500
         };
         this.callMsgr(callConfig);
